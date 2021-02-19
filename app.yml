@@ -1,27 +1,30 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-nginx-service
+  name: ecomm-service
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: app-nginx
+    app: ecomm-app
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-nginx-deployment
+  name: ecomm-deployment
+  labels: 
+    app: ecomm-app
+    tier: frontend
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: app-nginx
+      tier: frontend
   template:
     metadata:
       labels:
-        app: app-nginx
+        tier: frontend
     spec:
       containers:
       - name: nginx
