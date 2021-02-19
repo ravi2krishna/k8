@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: my-replicaset
-
+  name: ecomm-replicaset
+  labels: 
+    app: ecomm-app
+    tier: frontend
 spec:
-  # modify replicas according to your case
   replicas: 2
   selector:
     matchLabels:
-      app: webserver
+      tier: frontend
   template:
     metadata:
       labels:
-        app: webserver
+        tier: frontend
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: ecomm
+        image: ravi2krishna/webapp
         ports:
            - containerPort: 80
