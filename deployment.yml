@@ -1,16 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: ecomm-deployment
+  labels: 
+    app: ecomm-app
+    tier: frontend
 spec:
+  replicas: 4
   selector:
     matchLabels:
-      app: nginx
-  replicas: 4
+      tier: frontend
   template:
     metadata:
       labels:
-        app: nginx
+        tier: frontend
     spec:
       containers:
       - name: nginx
