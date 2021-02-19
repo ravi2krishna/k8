@@ -7,7 +7,7 @@ spec:
   ports:
   - port: 80
   selector:
-    app: ecomm-app
+    tier: frontend
 ---
 apiVersion: apps/v1
 kind: Deployment
